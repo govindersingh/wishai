@@ -28,4 +28,4 @@ Route::group(['middleware' => 'verify.shopify'], function () {
 /* 
 || Your app proxy data will be comming from below controller. make sure use 'auth.proxy' middleware.
 */
-Route::get('/proxy', 'AppProxyController@index')->middleware('auth.proxy');
+Route::any('/proxy', 'AppProxyController@index')->middleware('auth.proxy');

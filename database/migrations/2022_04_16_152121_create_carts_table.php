@@ -19,6 +19,7 @@ class CreateCartsTable extends Migration
 			// $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
 			$table->string('product_id');
 			$table->string('Variant_id');
+            $table->integer('add_to_wishlist_count')->nullable();
 			$table->integer('add_to_cart_count')->nullable();
 			$table->integer('checkout_count')->nullable();
             $table->timestamps();

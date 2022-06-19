@@ -20,13 +20,13 @@ class CreateProductsTable extends Migration
 			$table->string('product_id');
 			$table->string('Variant_id');
 			$table->string('handle');
-			$table->string('option1')->nullable();
-			$table->string('option2')->nullable();
-			$table->string('option3')->nullable();
-			$table->string('product_image')->nullable();
-			$table->string('variant_image')->nullable();
-			$table->string('price');
-			$table->string('compare_at_price')->nullable();
+			//$table->string('option1')->nullable();
+			//$table->string('option2')->nullable();
+			//$table->string('option3')->nullable();
+			//$table->string('product_image')->nullable();
+			//$table->string('variant_image')->nullable();
+			//$table->string('price');
+			//$table->string('compare_at_price')->nullable();
             $table->timestamps();
         });
     }
