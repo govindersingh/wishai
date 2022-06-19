@@ -1,5 +1,16 @@
 <div data-id="{{ block.id }}">
-  <button class="" style="background-color:{{ block.settings.color_button_bg }}; color:{{ block.settings.color_button_text }}">{{ block.settings.heading }}</button>
+  <button class="wishai-product_btn button button--full-width" 
+   onClick="wishaiAdd(this)"
+   data-product_id="{{product.id}}" 
+   data-product_handle="{{product.handle}}" 
+   data-variant_id="{{product.selected_or_first_available_variant.id}}" 
+   data-quantity="1" 
+   data-customer_id="{% if customer %}{{customer.id}}{% endif %}"
+   data-customer_name="{% if customer %}{{customer.name}}{% else %}{{'Anonymous'}}{% endif %}"
+   data-customer_email="{% if customer %}{{customer.email}}{% else %}{{'Anonymous'}}{% endif %}"
+   style="background-color:{{ block.settings.color_button_bg }}; color:{{ block.settings.color_button_text }}">
+   <span>{{ block.settings.heading }}</span>
+   </button>
 </div>
 
 {% schema %}
