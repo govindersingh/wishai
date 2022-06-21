@@ -1,0 +1,33 @@
+<div data-id="{{ block.id }}">
+  <button class="" style="background-color:{{ block.settings.color_button_bg }}; color:{{ block.settings.color_button_text }}">{{ block.settings.heading }}</button>
+</div>
+
+{% schema %}
+  {
+    "name": "WishlistAI Collection",
+    "target": "section",
+    "stylesheet": "wishlistai-collection.css",
+    "javascript": "wishlistai-collection.js",
+    "templates": ["collection"],
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Button Text",
+        "default": "Add to wishlist"
+      },
+      {
+        "type": "color",
+        "id": "color_button_bg",
+        "label": "Button Color Background",
+        "default": "#52C37A"
+      },
+      {
+        "type": "color",
+        "id": "color_button_text",
+        "label": "Button Color Text",
+        "default": "#FFFFFF"
+      }
+    ]
+  }
+{% endschema %}
