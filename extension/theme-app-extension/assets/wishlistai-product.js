@@ -11,9 +11,9 @@ const wishaiAdd = (event) => {
             "customer_name": event.getAttribute("data-customer_name"),
             "customer_email": event.getAttribute("data-customer_email"),
         },
-        share_id: (storage && storage.share_id) ? storage.share_id : false
+        share_id: (storage && storage.share_id) ? storage.share_id : false,
+        action: event.getAttribute("data-action") //ADD_TO_WISHAI || REMOVE_TO_WISHAI
     };
-    console.log(wishData);
     (async () => {
         const rawResponse = await fetch('/apps/proxy/wishai',{
             method: "POST",

@@ -29,20 +29,24 @@ class AppProxyController extends Controller
             $share->save();
 
             //| Create OR Update Customer data.
-            $customer = Customers::firstOrNew(['share_id' => $shareId],['customer_id' => $input['customer']['customer_id']]);
+            $customer = Customers::firstOrNew(['share_id' => $shareId], ['customer_id' => $input['customer']['customer_id']]);
             $customer->user_id = Auth::id();
             $customer->customer_name = $input['customer']['customer_name'];
             $customer->customer_email = $input['customer']['customer_email'];
             $customer->save();
 
-            //| Create Product data.
-            Products::updateOrCreate(['share_id' => $shareId, 'variant_id' => $input['product']['variant_id']],[
-                'user_id' =>  Auth::id(),
-                'customer_id' => $input['customer']['customer_id'],
-                'product_id' => $input['product']['product_id'],
-                'handle' => $input['product']['handle']
-            ]);
-            $product = Products::where('share_id', $shareId)->get(['product_id','variant_id','handle']);
+            if ($input['action'] == 'ADD_TO_WISHAI') {
+                //| Create Product data.
+                Products::updateOrCreate(['share_id' => $shareId, 'variant_id' => $input['product']['variant_id']], [
+                    'user_id' =>  Auth::id(),
+                    'customer_id' => $input['customer']['customer_id'],
+                    'product_id' => $input['product']['product_id'],
+                    'handle' => $input['product']['handle']
+                ]);
+            } else {
+                Products::where([['share_id', $shareId], ['variant_id', $input['product']['variant_id']]])->delete();
+            }
+            $product = Products::where('share_id', $shareId)->get(['product_id', 'variant_id', 'handle']);
 
             $data = [
                 "wishai_page" => "/pages/wishai",

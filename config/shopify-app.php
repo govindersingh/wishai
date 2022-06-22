@@ -176,7 +176,7 @@ return [
     |
     */
 
-    'api_scopes' => env('SHOPIFY_API_SCOPES', 'read_products,read_customers,write_script_tags'),
+    'api_scopes' => env('SHOPIFY_API_SCOPES', 'read_products,write_script_tags'),
 
     /*
     |--------------------------------------------------------------------------
@@ -346,11 +346,11 @@ return [
     */
 
     'scripttags' => [
-            [
-                'src' => env('SHOPIFY_SCRIPTTAG_1_SRC', env('APP_URL') . '/script-tags/whishlist_AI.js'),
-                'event' => env('SHOPIFY_SCRIPTTAG_1_EVENT', 'onload'),
-                'display_scope' => env('SHOPIFY_SCRIPTTAG_1_DISPLAY_SCOPE', 'online_store')
-            ],
+        [
+            'src' => env('SHOPIFY_SCRIPTTAG_1_SRC', env('APP_URL') . '/script-tags/whishlist_AI.js'),
+            'event' => env('SHOPIFY_SCRIPTTAG_1_EVENT', 'onload'),
+            'display_scope' => env('SHOPIFY_SCRIPTTAG_1_DISPLAY_SCOPE', 'online_store')
+        ]
     ],
 
     /*
