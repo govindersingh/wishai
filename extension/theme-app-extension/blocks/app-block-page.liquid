@@ -1,35 +1,5 @@
-<div id="wishaiPage" class="wishai_outer_row" data-id="{{ block.id }}"></div>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-<script id="wishaiPageTemplate" type="text/x-handlebars-template">
-{% raw %}
-  <div class="wishai_grid">
-      <div class="product-grid4">
-          <div class="product-image4">
-              <a href="#">
-                  <img class="pic-1" src="https://www.w3schools.com/bootstrap4/img_avatar4.png">
-                  <!--img class="pic-2" src="https://www.w3schools.com/bootstrap4/img_avatar3.png"-->
-              </a>
-              <ul class="social">
-                  <li><a href="#" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
-                  <li><a href="#" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-                  <li><a href="#" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-              </ul>
-              <span class="product-new-label">Sale</span>
-              <span class="product-discount-label">-10%</span>
-          </div>
-          <div class="product-content">
-              <h3 class="title">{{productTitle}}</h3>
-              <h4 class="title">{{variant.option1}}</h4>
-              <div class="price">
-                  {{variant.price}}
-                  <span>{{variant.compare_at_price}}</span>
-              </div>
-              <a class="add-to-cart" href="">ADD TO CART</a>
-          </div>
-      </div>
-  </div>
-{% endraw %}
-</script>
+<div id="wishaiPage" class="wishai_outer_row" data-id="{{ block.id }}"></div>
 {% schema %}
   {
     "name": "WishAI Page",

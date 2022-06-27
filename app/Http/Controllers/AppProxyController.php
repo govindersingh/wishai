@@ -23,20 +23,24 @@ class AppProxyController extends Controller
         $shareId = (!$input['share_id']) ? randomNumber(30) : $input['share_id'];
         try {
             //| Create OR Update shared link data.
-            $share = Share::firstOrNew(['share_id' => $shareId]);
-            $share->user_id = Auth::id();
-            $share->customer_id = $input['customer']['customer_id'];
-            $share->save();
+            if(isset($input['customer'])){
+                $share = Share::firstOrNew(['share_id' => $shareId]);
+                $share->user_id = Auth::id();
+                $share->customer_id = $input['customer']['customer_id'];
+                $share->save();
+            }
 
             //| Create OR Update Customer data.
-            $customer = Customers::firstOrNew(['share_id' => $shareId], ['customer_id' => $input['customer']['customer_id']]);
-            $customer->user_id = Auth::id();
-            $customer->customer_name = $input['customer']['customer_name'];
-            $customer->customer_email = $input['customer']['customer_email'];
-            $customer->save();
+            if(isset($input['customer'])){
+                $customer = Customers::firstOrNew(['share_id' => $shareId], ['customer_id' => $input['customer']['customer_id']]);
+                $customer->user_id = Auth::id();
+                $customer->customer_name = $input['customer']['customer_name'];
+                $customer->customer_email = $input['customer']['customer_email'];
+                $customer->save();
+            }
 
+            //| Create / Remove Product data.
             if ($input['action'] == 'ADD_TO_WISHAI') {
-                //| Create Product data.
                 Products::updateOrCreate(['share_id' => $shareId, 'variant_id' => $input['product']['variant_id']], [
                     'user_id' =>  Auth::id(),
                     'customer_id' => $input['customer']['customer_id'],
